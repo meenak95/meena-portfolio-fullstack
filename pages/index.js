@@ -105,7 +105,7 @@ export default function Portfolio() {
     { id: 9, name: "React", category: "frontend", proficiency: 80, years_experience: 3, description: "Hooks, Context" },
     { id: 10, name: "Jenkins", category: "devops", proficiency: 85, years_experience: 5, description: "CI/CD pipelines" },
     { id: 11, name: "MongoDB", category: "database", proficiency: 75, years_experience: 3, description: "Aggregation, modeling" },
-    { id: 12, name: "JUnit", category: "testing", proficiency: 90, years_experience: 7, description: "TDD, Mockito" },
+    { id: 12, name: "JUnit & Mockito", category: "testing", proficiency: 90, years_experience: 7, description: "Unit testing, TDD, mocking with Mockito" },
     { id: 13, name: "Python", category: "programming", proficiency: 70, years_experience: 2, description: "Scripting, APIs" },
     { id: 14, name: "Terraform", category: "devops", proficiency: 75, years_experience: 2, description: "IaC, provisioning" },
     { id: 15, name: "Redis", category: "database", proficiency: 80, years_experience: 4, description: "Caching, pub/sub" },
@@ -270,6 +270,30 @@ export default function Portfolio() {
 
   return (
     <div className="min-h-screen bg-slate-950 overflow-hidden">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-xl border-b border-slate-800">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex items-center justify-between h-16">
+            <a href="#home" className="flex items-center space-x-2">
+              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-sm">MK</span>
+              </div>
+              <span className="text-white font-semibold">Meena Kannan</span>
+            </a>
+            <nav className="hidden md:flex items-center space-x-1">
+              {[
+                { href: "#about", label: "About" },
+                { href: "#skills", label: "Skills" },
+                { href: "#projects", label: "Projects" },
+                { href: "#contact", label: "Contact" },
+              ].map((link) => (
+                <a key={link.href} href={link.href} className="px-4 py-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/50 transition-colors">
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+          </div>
+        </div>
+      </header>
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute top-20 left-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse-slow" />
         <div className="absolute top-40 right-20 w-80 h-80 bg-purple-500/15 rounded-full blur-3xl animate-float-1" />
@@ -304,7 +328,7 @@ export default function Portfolio() {
         <div className="absolute -top-2 -right-2 w-4 h-4 bg-green-400 rounded-full animate-ping"></div>
       </a>
 
-      <section ref={heroRef} className="relative min-h-screen flex items-center justify-center px-6 pt-16">
+      <section id="home" ref={heroRef} className="relative min-h-screen flex items-center justify-center px-6 pt-16">
         <div className="max-w-7xl mx-auto text-center z-10">
           <div className="mb-12 opacity-0 translate-y-8 animate-fade-in-up">
             <span className="inline-flex items-center mb-8 bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-400 border border-blue-500/30 px-6 py-2 text-lg rounded-xl animate-glow">
@@ -390,7 +414,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <section className="py-20 px-6 bg-gradient-to-b from-slate-950 to-slate-900/50 backdrop-blur-sm relative">
+      <section className="py-20 px-6 bg-gradient-to-b from-slate-950 to-slate-900/50 backdrop-blur-sm relative" id="stats">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <span className="inline-flex items-center mb-6 bg-blue-500/20 text-blue-400 border border-blue-500/30 rounded-xl px-4 py-2 animate-glow">
@@ -421,7 +445,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <section ref={skillsRef} className="py-20 px-6 relative">
+      <section ref={skillsRef} id="skills" className="py-20 px-6 relative">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <span className="inline-flex items-center mb-6 bg-purple-500/20 text-purple-400 border border-purple-500/30 rounded-xl px-4 py-2 animate-glow">
@@ -490,7 +514,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <section ref={projectsRef} className="py-20 px-6 bg-gradient-to-b from-slate-900/50 to-slate-950 relative">
+      <section ref={projectsRef} id="projects" className="py-20 px-6 bg-gradient-to-b from-slate-900/50 to-slate-950 relative">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <span className="inline-flex items-center mb-6 bg-green-500/20 text-green-400 border border-green-500/30 rounded-xl px-4 py-2 animate-glow">
@@ -606,7 +630,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <section className="py-20 px-6 relative">
+      <section className="py-20 px-6 relative" id="about">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <span className="inline-flex items-center mb-6 bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 rounded-xl px-4 py-2 animate-glow">
@@ -618,7 +642,7 @@ export default function Portfolio() {
           </div>
           <div className="grid lg:grid-cols-5 gap-8">
             <div className="lg:col-span-3 bg-slate-800/30 border border-slate-700/50 backdrop-blur-xl p-8 space-y-6 rounded-2xl">
-              <h3 className="text-3xl font-bold text-white mb-4 flex items-center">
+              <h3 className="text-3xl font-bold text-white mb-4 flex items-center justify-center text-center">
                 <Sparkles className="w-8 h-8 text-blue-400 mr-3 animate-spin-slow" /> My Professional Journey
               </h3>
               <p className="text-slate-300 leading-relaxed text-lg">
@@ -669,7 +693,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <section className="py-20 px-6 bg-gradient-to-b from-slate-950 to-slate-900 relative">
+      <section className="py-20 px-6 bg-gradient-to-b from-slate-950 to-slate-900 relative" id="contact">
         <div className="max-w-4xl mx-auto text-center">
           <span className="inline-flex items-center mb-6 bg-green-500/20 text-green-400 border border-green-500/30 rounded-xl px-4 py-2 animate-glow">
             <MessageCircle className="w-4 h-4 mr-2" /> Let's Connect
@@ -703,7 +727,7 @@ export default function Portfolio() {
                       href={contact.href}
                       target={contact.label === "WhatsApp" ? "_blank" : undefined}
                       rel={contact.label === "WhatsApp" ? "noopener noreferrer" : undefined}
-                      className="text-white font-medium hover:text-blue-400 transition-colors duration-300"
+                      className="text-white font-medium hover:text-blue-400 transition-colors duration-300 break-words"
                     >
                       {contact.value}
                     </a>
@@ -782,7 +806,7 @@ export default function Portfolio() {
             </div>
           </div>
           <div className="border-t border-slate-800/50 mt-8 pt-8 text-center">
-            <p className="text-slate-400 text-sm">© 2024 Meena Kannan. Crafted with passion and precision.</p>
+            <p className="text-slate-400 text-sm">© 2025 Meena Kannan. Delivering solutions with passion and precision.</p>
           </div>
         </div>
         <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
