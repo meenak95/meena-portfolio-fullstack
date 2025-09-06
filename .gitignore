@@ -4,12 +4,13 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Production builds
-dist/
-build/
+# Next.js build output
 .next/
 out/
 
+# Production build
+/dist/
+/build/
 # Environment variables
 .env
 .env.local
@@ -17,7 +18,7 @@ out/
 .env.test.local
 .env.production.local
 
-# IDE and editor files
+# IDE files
 .vscode/
 .idea/
 *.swp
@@ -78,30 +79,20 @@ jspm_packages/
 .cache
 .parcel-cache
 
-# Next.js build output
+# next.js build output
 .next
 
-# Nuxt.js build / generate output
+# nuxt.js build output
 .nuxt
 
-# Gatsby files
-.cache/
-# public - commented out to include React public directory
+# vuepress build output
+.vuepress/dist
 
-# Storybook build outputs
-.out
-.storybook-out
+# Serverless directories
+.serverless
 
-# Temporary folders
-tmp/
-temp/
+# FuseBox cache
+.fusebox/
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+# DynamoDB Local files
+.dynamodb/
