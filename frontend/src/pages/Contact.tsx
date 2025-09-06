@@ -11,8 +11,7 @@ import {
   Send, 
   MessageCircle, 
   Clock,
-  CheckCircle,
-  Sparkles
+  CheckCircle
 } from "lucide-react";
 
 // Mock email service - replace with actual implementation

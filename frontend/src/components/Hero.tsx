@@ -1,112 +1,17 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
-import { createPageUrl } from "../utils";
+import React, { useRef } from "react";
 import { 
   ChevronRight, 
-  Code, 
-  Cloud, 
-  Database, 
-  Cpu, 
-  Globe, 
-  Award,
   ArrowRight,
   Download,
   Sparkles,
-  Briefcase,
-  MessageCircle
+  Briefcase
 } from "lucide-react";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 
-const Counter = ({ to }: { to: string }) => {
-  const ref = useRef<HTMLSpanElement>(null);
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          let start = 0;
-          const end = parseInt(to.replace("+", ""));
-          if (start === end) return;
-          
-          let duration = 2000;
-          let startTime: number | null = null;
-
-          const animate = (currentTime: number) => {
-            if (!startTime) startTime = currentTime;
-            const progress = Math.min((currentTime - startTime) / duration, 1);
-            setCount(Math.floor(progress * end));
-            if (progress < 1) {
-              requestAnimationFrame(animate);
-            }
-          };
-          requestAnimationFrame(animate);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.5 }
-    );
-
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, [to]);
-
-  return <span ref={ref}>{count}{to.includes('+') ? '+' : ''}</span>;
-};
-
-const TiltCard = ({ children, className }: { children: React.ReactNode; className?: string }) => {
-  const ref = useRef<HTMLDivElement>(null);
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!ref.current) return;
-    const { left, top, width, height } = ref.current.getBoundingClientRect();
-    const x = (e.clientX - left - width / 2) / 10;
-    const y = (e.clientY - top - height / 2) / 10;
-    ref.current.style.transform = `perspective(1000px) rotateY(${x}deg) rotateX(${-y}deg) scale3d(1.03, 1.03, 1.03)`;
-  };
-
-  const handleMouseLeave = () => {
-    if (!ref.current) return;
-    ref.current.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) scale3d(1, 1, 1)';
-  };
-
-  return (
-    <div
-      ref={ref}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      className={`transition-transform duration-300 ease-out will-change-transform ${className || ''}`}
-    >
-      {children}
-    </div>
-  );
-};
 
 export default function Hero() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const heroRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
-  const techStack = [
-    { name: "Java", icon: <Code className="w-6 h-6" />, color: "bg-orange-500", particles: "orange" },
-    { name: "Spring Boot", icon: <Cpu className="w-6 h-6" />, color: "bg-green-500", particles: "green" },
-    { name: "Angular", icon: <Globe className="w-6 h-6" />, color: "bg-red-500", particles: "red" },
-    { name: "AWS", icon: <Cloud className="w-6 h-6" />, color: "bg-yellow-500", particles: "yellow" },
-    { name: "PostgreSQL", icon: <Database className="w-6 h-6" />, color: "bg-blue-500", particles: "blue" },
-    { name: "Kubernetes", icon: <Cpu className="w-6 h-6" />, color: "bg-purple-500", particles: "purple" },
-  ];
 
   return (
     <section ref={heroRef} className="relative min-h-screen flex items-center justify-center px-6 pt-16">
@@ -135,42 +40,8 @@ export default function Hero() {
           </p>
         </div>
 
-        {/* Animated Tech Stack Orbit */}
-        <div className="relative mb-16 h-96 w-96 mx-auto opacity-0 translate-y-8 animate-fade-in-up delay-300">
-          <div className="absolute inset-0 animate-spin-very-slow">
-            {techStack.map((tech, index) => (
-              <div
-                key={tech.name}
-                className="absolute flex items-center justify-center"
-                style={{
-                  left: '50%',
-                  top: '50%',
-                  transform: `translate(-50%, -50%) rotate(${index * 60}deg) translateY(-140px) rotate(-${index * 60}deg)`,
-                }}
-              >
-                <div className={`group relative p-4 rounded-2xl ${tech.color}/20 border ${tech.color}/30 backdrop-blur-sm hover:scale-125 transition-all duration-500 cursor-pointer animate-float-gentle`}
-                     style={{ animationDelay: `${index * 0.5}s` }}>
-                  <div className={`p-2 rounded-xl ${tech.color}/30 group-hover:animate-spin`}>
-                    {tech.icon}
-                  </div>
-                  <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-slate-800/90 px-3 py-1 rounded-full text-xs font-medium text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                    {tech.name}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-          
-          {/* Central Hub */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-24 h-24 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-2xl animate-pulse-glow">
-              <Cpu className="w-12 h-12 text-white animate-icon-glow" />
-            </div>
-          </div>
-        </div>
-
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-6 justify-center opacity-0 translate-y-8 animate-fade-in-up delay-500">
+        <div className="flex flex-col sm:flex-row gap-6 justify-center opacity-0 translate-y-8 animate-fade-in-up delay-300">
           <Button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-10 py-4 rounded-2xl text-xl group shadow-2xl hover:shadow-blue-500/25 transform hover:scale-105 transition-all duration-300">
             <Briefcase className="w-6 h-6 mr-3 group-hover:animate-bounce" />
             Explore My Work

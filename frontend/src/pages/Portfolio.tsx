@@ -37,45 +37,6 @@ import { skillsData, projectsData } from "../components/skills/SkillsData";
 import Hero from "../components/Hero";
 import Stats from "../components/Stats";
 
-const Counter = ({ to }: { to: string }) => {
-  const [count, setCount] = useState(0);
-  const ref = React.useRef<HTMLSpanElement>(null);
-
-  useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          let start = 0;
-          const end = parseInt(to.replace("+", ""));
-          if (start === end) return;
-          
-          let duration = 2000;
-          let startTime: number | null = null;
-
-          const animate = (currentTime: number) => {
-            if (!startTime) startTime = currentTime;
-            const progress = Math.min((currentTime - startTime) / duration, 1);
-            setCount(Math.floor(progress * end));
-            if (progress < 1) {
-              requestAnimationFrame(animate);
-            }
-          };
-          requestAnimationFrame(animate);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.5 }
-    );
-
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, [to]);
-
-  return <span ref={ref}>{count}{to.includes('+') ? '+' : ''}</span>;
-};
 
 const TiltCard = ({ children, className, style }: { children: React.ReactNode; className?: string; style?: React.CSSProperties }) => {
   const ref = React.useRef<HTMLDivElement>(null);
@@ -206,14 +167,6 @@ export default function Portfolio() {
         </div>
       </div>
 
-      {/* Floating Contact Button */}
-      <Link
-        to={createPageUrl("Contact")}
-        className="fixed bottom-8 right-8 z-50 bg-gradient-to-r from-blue-500 to-purple-600 text-white p-4 rounded-full shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 hover:scale-110 group animate-bounce-subtle"
-      >
-        <MessageCircle className="w-6 h-6 group-hover:animate-pulse" />
-        <div className="absolute -top-2 -right-2 w-4 h-4 bg-green-400 rounded-full animate-ping"></div>
-      </Link>
 
       {/* Hero Section */}
       <Hero />
