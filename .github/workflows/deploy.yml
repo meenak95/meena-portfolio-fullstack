@@ -27,24 +27,26 @@ jobs:
           node-version: '18'
           cache: 'npm'
 
-      - name: Install dependencies
+      - name: Install dependencies (frontend)
+        working-directory: frontend
         run: npm ci
 
-      - name: Build project
+      - name: Build CRA project
+        env:
+          PUBLIC_URL: /meena-portfolio-fullstack
+        working-directory: frontend
         run: npm run build
 
       - name: Add .nojekyll file
-        run: touch out/.nojekyll
+        run: touch frontend/build/.nojekyll
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
-        with:
-          static_site_generator: next
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
+          path: frontend/build
 
   deploy:
     environment:

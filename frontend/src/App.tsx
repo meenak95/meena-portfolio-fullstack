@@ -9,7 +9,7 @@ import Contact from './pages/Contact';
 
 function App() {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL || '/meena-portfolio-fullstack'}>
       <Layout>
         <Routes>
           <Route path="/" element={<Portfolio />} />

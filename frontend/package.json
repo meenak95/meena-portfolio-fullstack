@@ -2,6 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://meenak95.github.io/meena-portfolio-fullstack",
   "dependencies": {
     "@tailwindcss/typography": "^0.5.16",
     "@testing-library/dom": "^10.4.1",
@@ -21,8 +22,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
+    "start": "PUBLIC_URL=/meena-portfolio-fullstack craco start",
+    "build": "PUBLIC_URL=/meena-portfolio-fullstack craco build",
     "test": "craco test",
     "eject": "react-scripts eject"
   },
