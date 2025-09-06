@@ -3,8 +3,6 @@ name: Deploy Portfolio
 on:
   push:
     branches: [ deploy ]
-  pull_request:
-    branches: [ deploy ]
 
 jobs:
   build-and-deploy:
@@ -19,56 +17,20 @@ jobs:
       with:
         node-version: '18'
         cache: 'npm'
+        cache-dependency-path: 'frontend/package-lock.json'
         
-    - name: Install dependencies
+    - name: Install frontend dependencies
       run: |
-        if [ -f package.json ]; then
-          npm ci
-        fi
+        cd frontend
+        npm ci
         
     - name: Build frontend
       run: |
-        if [ -d "frontend" ]; then
-          cd frontend
-          npm ci
-          npm run build
-        fi
-        
-    - name: Build backend
-      run: |
-        if [ -d "backend" ]; then
-          cd backend
-          npm ci
-          npm run build
-        fi
-        
-    - name: Run tests
-      run: |
-        if [ -f package.json ]; then
-          npm test --if-present
-        fi
-        if [ -d "frontend" ]; then
-          cd frontend
-          npm test --if-present --watchAll=false
-        fi
-        if [ -d "backend" ]; then
-          cd backend
-          npm test --if-present
-        fi
+        cd frontend
+        npm run build
         
     - name: Deploy to GitHub Pages
-      if: github.ref == 'refs/heads/deploy'
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./frontend/build
-        cname: ${{ github.repository_owner }}.github.io
-        
-    - name: Deploy to Vercel
-      if: github.ref == 'refs/heads/deploy'
-      uses: amondnet/vercel-action@v25
-      with:
-        vercel-token: ${{ secrets.VERCEL_TOKEN }}
-        vercel-org-id: ${{ secrets.ORG_ID }}
-        vercel-project-id: ${{ secrets.PROJECT_ID }}
-        working-directory: ./
