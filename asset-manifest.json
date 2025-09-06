@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/meena-portfolio-fullstack/static/css/main.bcb0e31e.css",
+    "main.js": "/meena-portfolio-fullstack/static/js/main.7757931c.js",
+    "static/js/453.670e15c7.chunk.js": "/meena-portfolio-fullstack/static/js/453.670e15c7.chunk.js",
+    "index.html": "/meena-portfolio-fullstack/index.html",
+    "main.bcb0e31e.css.map": "/meena-portfolio-fullstack/static/css/main.bcb0e31e.css.map",
+    "main.7757931c.js.map": "/meena-portfolio-fullstack/static/js/main.7757931c.js.map",
+    "453.670e15c7.chunk.js.map": "/meena-portfolio-fullstack/static/js/453.670e15c7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bcb0e31e.css",
+    "static/js/main.7757931c.js"
+  ]
+}
