@@ -11,22 +11,42 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Detect project layout
+        id: detect
+        shell: bash
+        run: |
+          if [ -f frontend/package-lock.json ]; then
+            echo "LOCKFILE_PATH=frontend/package-lock.json" >> $GITHUB_ENV
+            echo "WORKDIR=frontend" >> $GITHUB_ENV
+            echo "ARTIFACT_PATH=frontend/build" >> $GITHUB_ENV
+          elif [ -f package-lock.json ]; then
+            echo "LOCKFILE_PATH=package-lock.json" >> $GITHUB_ENV
+            echo "WORKDIR=." >> $GITHUB_ENV
+            echo "ARTIFACT_PATH=.next" >> $GITHUB_ENV
+          else
+            echo "LOCKFILE_PATH=package-lock.json" >> $GITHUB_ENV
+            echo "WORKDIR=." >> $GITHUB_ENV
+            echo "ARTIFACT_PATH=.next" >> $GITHUB_ENV
+          fi
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
-          cache-dependency-path: package-lock.json
+          cache-dependency-path: ${{ env.LOCKFILE_PATH }}
 
       - name: Install dependencies
         run: npm ci
+        working-directory: ${{ env.WORKDIR }}
 
       - name: Build
         run: npm run build
+        working-directory: ${{ env.WORKDIR }}
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         if: success()
         with:
-          name: next-build
-          path: .next
+          name: web-build
+          path: ${{ env.ARTIFACT_PATH }}
