@@ -131,9 +131,9 @@ export default function Portfolio() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 overflow-hidden">
+    <div className="relative">
       {/* Dynamic Background with Particle System */}
-      <div className="fixed inset-0 pointer-events-none">
+      <div className="fixed inset-0 pointer-events-none z-0">
         {/* Animated Gradients */}
         <div className="absolute top-20 left-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse-slow" />
         <div className="absolute top-40 right-20 w-80 h-80 bg-purple-500/15 rounded-full blur-3xl animate-float-1" />
@@ -169,13 +169,17 @@ export default function Portfolio() {
 
 
       {/* Hero Section */}
-      <Hero />
+      <div className="relative z-10">
+        <Hero />
+      </div>
 
       {/* Stats Section */}
-      <Stats />
+      <div className="relative z-10">
+        <Stats />
+      </div>
 
       {/* Skills Section */}
-      <section ref={skillsRef} className="py-20 px-6 relative">
+      <section ref={skillsRef} className="py-20 px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <Badge variant="secondary" className="mb-6 bg-purple-500/20 text-purple-400 border-purple-500/30 animate-glow">
@@ -253,7 +257,7 @@ export default function Portfolio() {
       </section>
 
       {/* Projects Section */}
-      <section ref={projectsRef} className="py-20 px-6 bg-gradient-to-b from-slate-900/50 to-slate-950 relative">
+      <section ref={projectsRef} className="py-20 px-6 bg-gradient-to-b from-slate-900/50 to-slate-950 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <Badge variant="secondary" className="mb-6 bg-green-500/20 text-green-400 border-green-500/30 animate-glow">
@@ -400,7 +404,7 @@ export default function Portfolio() {
       </section>
 
       {/* About & Certifications Section */}
-      <section className="py-20 px-6 relative">
+      <section className="py-20 px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <Badge variant="secondary" className="mb-6 bg-cyan-500/20 text-cyan-400 border-cyan-500/30 animate-glow">
@@ -469,7 +473,7 @@ export default function Portfolio() {
       </section>
 
       {/* Beyond the Code */}
-      <section className="py-20 px-6">
+      <section className="py-20 px-6 relative z-10">
         <div className="max-w-4xl mx-auto">
           <TiltCard>
             <div className="relative bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 backdrop-blur-xl rounded-3xl p-12 text-center overflow-hidden">
@@ -490,7 +494,7 @@ export default function Portfolio() {
       </section>
 
       {/* Contact Preview Section */}
-      <section className="py-20 px-6 bg-gradient-to-b from-slate-950 to-slate-900 relative">
+      <section className="py-20 px-6 bg-gradient-to-b from-slate-950 to-slate-900 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <Badge variant="secondary" className="mb-6 bg-green-500/20 text-green-400 border-green-500/30 animate-glow">
             <MessageCircle className="w-4 h-4 mr-2" />
@@ -549,7 +553,7 @@ export default function Portfolio() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-6 bg-slate-900/50 border-t border-slate-800/50 backdrop-blur-xl relative">
+      <footer className="py-12 px-6 bg-slate-900/50 border-t border-slate-800/50 backdrop-blur-xl relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-3 gap-8">
             {/* Brand */}
