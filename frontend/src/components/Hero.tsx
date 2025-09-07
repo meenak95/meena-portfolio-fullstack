@@ -10,7 +10,11 @@ import {
   Globe,
   Cloud,
   Database,
-  Server
+  Server,
+  Wrench,
+  TestTube,
+  Rocket,
+  Monitor
 } from "lucide-react";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
@@ -51,7 +55,7 @@ export default function Hero() {
           </p>
         </div>
 
-        {/* Orbital CPU Animation (polished) */}
+        {/* Orbital CPU Animation (polished + full icons) */}
         <div className="relative mb-16 h-72 w-72 md:h-96 md:w-96 mx-auto opacity-0 translate-y-8 animate-fade-in-up delay-300">
           {/* Ambient glow */}
           <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500/10 via-cyan-500/10 to-purple-500/10 blur-3xl"></div>
@@ -82,6 +86,27 @@ export default function Hero() {
                 <Globe className="w-5 h-5 text-fuchsia-300" />
               </div>
             </div>
+            {/* Diagonals for SDLC icons */}
+            <div className="absolute top-6 right-6">
+              <div className="p-2.5 rounded-2xl bg-slate-800/60 border border-slate-700/50 backdrop-blur-md shadow-md">
+                <Wrench className="w-5 h-5 text-yellow-300" />
+              </div>
+            </div>
+            <div className="absolute bottom-6 left-6">
+              <div className="p-2.5 rounded-2xl bg-slate-800/60 border border-slate-700/50 backdrop-blur-md shadow-md">
+                <TestTube className="w-5 h-5 text-pink-300" />
+              </div>
+            </div>
+            <div className="absolute top-6 left-6">
+              <div className="p-2.5 rounded-2xl bg-slate-800/60 border border-slate-700/50 backdrop-blur-md shadow-md">
+                <Rocket className="w-5 h-5 text-red-300" />
+              </div>
+            </div>
+            <div className="absolute bottom-6 right-6">
+              <div className="p-2.5 rounded-2xl bg-slate-800/60 border border-slate-700/50 backdrop-blur-md shadow-md">
+                <Monitor className="w-5 h-5 text-indigo-300" />
+              </div>
+            </div>
           </div>
 
           {/* Central CPU */}
@@ -89,6 +114,24 @@ export default function Hero() {
             <div className="w-20 h-20 md:w-24 md:h-24 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-2xl">
               <Cpu className="w-10 h-10 md:w-12 md:h-12 text-white animate-icon-glow" />
             </div>
+          </div>
+
+          {/* Floating cloud icons for depth */}
+          <div className="absolute inset-0 pointer-events-none opacity-30">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <div
+                key={i}
+                className="absolute animate-cloud-float"
+                style={{
+                  left: `${10 + (i * 15) % 80}%`,
+                  top: `${10 + ((i * 22) % 70)}%`,
+                  animationDelay: `${i * 0.8}s`,
+                  animationDuration: `${12 + (i % 3) * 3}s`
+                }}
+              >
+                <Cloud className="w-5 h-5 md:w-6 md:h-6 text-slate-500" />
+              </div>
+            ))}
           </div>
         </div>
 
