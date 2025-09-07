@@ -19,6 +19,10 @@ interface LayoutProps {
 export default function Layout({ children, currentPageName }: LayoutProps) {
   const location = useLocation();
 
+  React.useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [location.pathname]);
+
   return (
     <div className="min-h-screen bg-slate-950">
       {/* Animated Background */}
