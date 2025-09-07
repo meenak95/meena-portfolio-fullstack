@@ -22,6 +22,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "build:css": "tailwindcss -i ./src/index.css -o ./src/tw.css --minify",
+    "prestart": "npm run build:css",
+    "prebuild": "npm run build:css",
     "start": "craco start",
     "build": "PUBLIC_URL=/meena-portfolio-fullstack craco build",
     "test": "craco test",
