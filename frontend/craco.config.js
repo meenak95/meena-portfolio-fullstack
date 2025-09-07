@@ -17,5 +17,15 @@ module.exports = {
       return webpackConfig;
     },
   },
+  devServer: (devServerConfig) => {
+    // Force dev middleware to serve assets from root
+    devServerConfig.devMiddleware = devServerConfig.devMiddleware || {};
+    devServerConfig.devMiddleware.publicPath = '/';
+
+    // Ensure SPA fallback still works from root
+    devServerConfig.historyApiFallback = devServerConfig.historyApiFallback || {};
+    devServerConfig.historyApiFallback.index = '/';
+    return devServerConfig;
+  },
 }
 
