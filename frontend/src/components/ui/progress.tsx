@@ -4,10 +4,11 @@ interface ProgressProps extends React.HTMLAttributes<HTMLDivElement> {
   value?: number;
   max?: number;
   className?: string;
+  delayMs?: number;
 }
 
 const Progress = React.forwardRef<HTMLDivElement, ProgressProps>((
-  { className = '', value = 0, max = 100, ...props },
+  { className = '', value = 0, max = 100, delayMs = 0, ...props },
   ref
 ) => {
   const [displayed, setDisplayed] = React.useState(0);
@@ -16,7 +17,7 @@ const Progress = React.forwardRef<HTMLDivElement, ProgressProps>((
   const rafId = React.useRef<number | null>(null);
 
   React.useEffect(() => {
-    const start = performance.now();
+    const startTime = performance.now() + delayMs;
     const duration = 700; // ms
     const from = previous.current;
     const to = target;
@@ -24,7 +25,11 @@ const Progress = React.forwardRef<HTMLDivElement, ProgressProps>((
     const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
 
     const tick = (now: number) => {
-      const progress = Math.min((now - start) / duration, 1);
+      if (now < startTime) {
+        rafId.current = requestAnimationFrame(tick);
+        return;
+      }
+      const progress = Math.min((now - startTime) / duration, 1);
       const eased = easeOutCubic(progress);
       const next = from + (to - from) * eased;
       setDisplayed(next);
@@ -40,7 +45,7 @@ const Progress = React.forwardRef<HTMLDivElement, ProgressProps>((
     return () => {
       if (rafId.current) cancelAnimationFrame(rafId.current);
     };
-  }, [target]);
+  }, [target, delayMs]);
 
   return (
     <div

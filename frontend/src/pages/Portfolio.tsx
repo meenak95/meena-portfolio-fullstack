@@ -230,7 +230,7 @@ export default function Portfolio() {
                           <span>Proficiency</span>
                           <span className="font-bold text-white" aria-live="polite">{skill.proficiency}%</span>
                         </div>
-                        <Progress value={skill.proficiency} />
+                        <Progress value={skill.proficiency} delayMs={index * 100} />
                       </div>
                       
                       {skill.description && (
