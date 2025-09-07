@@ -508,38 +508,66 @@ export default function Portfolio() {
             and ways we can create amazing solutions together.
           </p>
 
-          <div className="grid md:grid-cols-4 gap-8 mb-12">
-            {[
-              { icon: Mail, label: "Email", value: "meenakannan92@gmail.com", href: "mailto:meenakannan92@gmail.com" },
-              { icon: Phone, label: "Phone", value: "+65 87373057", href: "tel:+6587373057" },
-              { icon: MessageCircle, label: "WhatsApp", value: "+91 97893 02084", href: "https://wa.me/919789302084" },
-              { icon: MapPin, label: "Location", value: "Singapore", href: null }
-            ].map((contact, index) => (
-              <Card 
-                key={index}
-                className="bg-slate-800/30 border-slate-700/50 backdrop-blur-xl hover:bg-slate-800/50 transition-all duration-500 group opacity-0 translate-y-8 animate-fade-in-up"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <CardContent className="p-6 text-center">
-                  <div className="text-blue-400 mb-4 flex justify-center group-hover:scale-110 transition-transform duration-300">
-                    <contact.icon className="w-8 h-8" />
-                  </div>
-                  <p className="text-slate-400 text-sm mb-2">{contact.label}</p>
-                  {contact.href ? (
-                    <a 
-                      href={contact.href}
-                      target={contact.label === "WhatsApp" ? "_blank" : undefined}
-                      rel={contact.label === "WhatsApp" ? "noopener noreferrer" : undefined}
-                      className="text-white font-medium hover:text-blue-400 transition-colors duration-300"
-                    >
-                      {contact.value}
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            {/* Email */}
+            <Card 
+              className="bg-slate-800/30 border-slate-700/50 backdrop-blur-xl hover:bg-slate-800/50 transition-all duration-500 group opacity-0 translate-y-8 animate-fade-in-up"
+              style={{ animationDelay: `0s` }}
+            >
+              <CardContent className="p-6 text-center">
+                <div className="text-blue-400 mb-4 flex justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Mail className="w-8 h-8" />
+                </div>
+                <p className="text-slate-400 text-sm mb-2">Email</p>
+                <a 
+                  href="mailto:meenakannan92@gmail.com"
+                  className="text-white font-medium hover:text-blue-400 transition-colors duration-300 break-all"
+                >
+                  meenakannan92@gmail.com
+                </a>
+              </CardContent>
+            </Card>
+
+            {/* Phone & WhatsApp combined */}
+            <Card 
+              className="bg-slate-800/30 border-slate-700/50 backdrop-blur-xl hover:bg-slate-800/50 transition-all duration-500 group opacity-0 translate-y-8 animate-fade-in-up"
+              style={{ animationDelay: `0.1s` }}
+            >
+              <CardContent className="p-6">
+                <div className="text-blue-400 mb-4 flex justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Phone className="w-8 h-8" />
+                </div>
+                <p className="text-slate-400 text-sm mb-3 text-center">Phone & WhatsApp</p>
+                <div className="space-y-2 text-center">
+                  <div className="flex items-center justify-center space-x-2">
+                    <Phone className="w-4 h-4 text-slate-400" />
+                    <a href="tel:+6587373057" className="text-white font-medium hover:text-blue-400 transition-colors duration-300">
+                      +65 87373057
                     </a>
-                  ) : (
-                    <p className="text-white font-medium">{contact.value}</p>
-                  )}
-                </CardContent>
-              </Card>
-            ))}
+                  </div>
+                  <div className="flex items-center justify-center space-x-2">
+                    <MessageCircle className="w-4 h-4 text-slate-400" />
+                    <a href="https://wa.me/919789302084" target="_blank" rel="noopener noreferrer" className="text-white font-medium hover:text-blue-400 transition-colors duration-300">
+                      +91 97893 02084
+                    </a>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Location */}
+            <Card 
+              className="bg-slate-800/30 border-slate-700/50 backdrop-blur-xl hover:bg-slate-800/50 transition-all duration-500 group opacity-0 translate-y-8 animate-fade-in-up"
+              style={{ animationDelay: `0.2s` }}
+            >
+              <CardContent className="p-6 text-center">
+                <div className="text-blue-400 mb-4 flex justify-center group-hover:scale-110 transition-transform duration-300">
+                  <MapPin className="w-8 h-8" />
+                </div>
+                <p className="text-slate-400 text-sm mb-2">Location</p>
+                <p className="text-white font-medium">Singapore</p>
+              </CardContent>
+            </Card>
           </div>
 
           <Link to={createPageUrl("Contact")}>
