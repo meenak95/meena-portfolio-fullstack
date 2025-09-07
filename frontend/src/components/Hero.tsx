@@ -14,7 +14,8 @@ import {
   Wrench,
   TestTube,
   Rocket,
-  Monitor
+  Monitor,
+  Coffee
 } from "lucide-react";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
@@ -37,8 +38,12 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto text-center z-10">
         <div className="mb-12 opacity-0 translate-y-8 animate-fade-in-up">
           <Badge variant="secondary" className="mb-8 px-6 py-2 text-lg rounded-full text-white bg-gradient-to-r from-fuchsia-500 via-purple-500 to-indigo-500 bg-300% animate-gradient-x shadow-[0_0_20px_rgba(168,85,247,0.35)]">
-            <Sparkles className="w-5 h-5 mr-2 animate-spin-slow" />
-            Full Stack Developer
+            <span className="inline-flex items-center">
+              <span className="mr-3 inline-flex items-center justify-center w-7 h-7 rounded-full bg-orange-500/25 border border-orange-400/40 shadow-[0_0_10px_rgba(249,115,22,0.35)]">
+                <Coffee className="w-4 h-4 text-orange-300" />
+              </span>
+              Full Stack Developer
+            </span>
           </Badge>
           
           <h1 className="text-7xl md:text-9xl font-black mb-8 leading-none">
