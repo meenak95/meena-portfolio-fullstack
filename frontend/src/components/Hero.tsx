@@ -51,47 +51,43 @@ export default function Hero() {
           </p>
         </div>
 
-        {/* Orbital CPU Animation */}
+        {/* Orbital CPU Animation (polished) */}
         <div className="relative mb-16 h-72 w-72 md:h-96 md:w-96 mx-auto opacity-0 translate-y-8 animate-fade-in-up delay-300">
-          {/* Spinning ring */}
-          <div className="absolute inset-0 rounded-full border border-slate-700/50 animate-spin-very-slow"></div>
+          {/* Ambient glow */}
+          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500/10 via-cyan-500/10 to-purple-500/10 blur-3xl"></div>
+
+          {/* Rings */}
+          <div className="absolute inset-0 rounded-full border-2 border-slate-700/40"></div>
+          <div className="absolute inset-6 rounded-full border border-slate-700/30"></div>
+
+          {/* Rotating orbit container */}
+          <div className="absolute inset-0 animate-spin-very-slow">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2">
+              <div className="p-2.5 rounded-2xl bg-slate-800/60 border border-slate-700/50 backdrop-blur-md shadow-md">
+                <Code className="w-5 h-5 text-orange-300" />
+              </div>
+            </div>
+            <div className="absolute right-0 top-1/2 -translate-y-1/2">
+              <div className="p-2.5 rounded-2xl bg-slate-800/60 border border-slate-700/50 backdrop-blur-md shadow-md">
+                <Server className="w-5 h-5 text-emerald-300" />
+              </div>
+            </div>
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2">
+              <div className="p-2.5 rounded-2xl bg-slate-800/60 border border-slate-700/50 backdrop-blur-md shadow-md">
+                <Database className="w-5 h-5 text-sky-300" />
+              </div>
+            </div>
+            <div className="absolute left-0 top-1/2 -translate-y-1/2">
+              <div className="p-2.5 rounded-2xl bg-slate-800/60 border border-slate-700/50 backdrop-blur-md shadow-md">
+                <Globe className="w-5 h-5 text-fuchsia-300" />
+              </div>
+            </div>
+          </div>
 
           {/* Central CPU */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-20 h-20 md:w-24 md:h-24 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-2xl animate-pulse-glow">
+            <div className="w-20 h-20 md:w-24 md:h-24 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-2xl">
               <Cpu className="w-10 h-10 md:w-12 md:h-12 text-white animate-icon-glow" />
-            </div>
-          </div>
-
-          {/* Orbiting tech icons (fixed positions for performance) */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2">
-            <div className="group p-3 rounded-2xl bg-orange-500/20 border border-orange-500/30 backdrop-blur-sm animate-float-gentle">
-              <Code className="w-6 h-6 text-orange-400 group-hover:animate-spin" />
-            </div>
-          </div>
-          <div className="absolute top-1/2 right-0 -translate-y-1/2">
-            <div className="group p-3 rounded-2xl bg-green-500/20 border border-green-500/30 backdrop-blur-sm animate-float-gentle" style={{ animationDelay: '0.15s' }}>
-              <Server className="w-6 h-6 text-green-400 group-hover:animate-spin" />
-            </div>
-          </div>
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2">
-            <div className="group p-3 rounded-2xl bg-blue-500/20 border border-blue-500/30 backdrop-blur-sm animate-float-gentle" style={{ animationDelay: '0.3s' }}>
-              <Database className="w-6 h-6 text-blue-400 group-hover:animate-spin" />
-            </div>
-          </div>
-          <div className="absolute top-1/2 left-0 -translate-y-1/2">
-            <div className="group p-3 rounded-2xl bg-purple-500/20 border border-purple-500/30 backdrop-blur-sm animate-float-gentle" style={{ animationDelay: '0.45s' }}>
-              <Globe className="w-6 h-6 text-purple-400 group-hover:animate-spin" />
-            </div>
-          </div>
-          <div className="absolute top-6 right-6">
-            <div className="group p-3 rounded-2xl bg-yellow-500/20 border border-yellow-500/30 backdrop-blur-sm animate-float-gentle" style={{ animationDelay: '0.6s' }}>
-              <Cloud className="w-6 h-6 text-yellow-400 group-hover:animate-spin" />
-            </div>
-          </div>
-          <div className="absolute bottom-6 left-6">
-            <div className="group p-3 rounded-2xl bg-red-500/20 border border-red-500/30 backdrop-blur-sm animate-float-gentle" style={{ animationDelay: '0.75s' }}>
-              <Server className="w-6 h-6 text-red-400 group-hover:animate-spin" />
             </div>
           </div>
         </div>
