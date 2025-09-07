@@ -69,10 +69,6 @@ export default function Hero() {
           {/* Ambient glow */}
           <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500/10 via-cyan-500/10 to-purple-500/10 blur-3xl"></div>
 
-          {/* Rings */}
-          <div className="absolute inset-0 rounded-full border-2 border-slate-700/40"></div>
-          <div className="absolute inset-6 rounded-full border border-slate-700/30"></div>
-
           {/* Rotating orbit container with computed positions */}
           <div className="absolute inset-0 animate-spin-very-slow">
             {techStack.map((tech, index) => (
