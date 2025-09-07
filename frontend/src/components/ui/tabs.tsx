@@ -33,7 +33,7 @@ const Tabs = ({ defaultValue, value, onValueChange, children, className = '' }: 
 };
 
 const TabsList = ({ children, className = '' }: { children: React.ReactNode; className?: string }) => (
-  <div className={`inline-flex h-10 items-center justify-center rounded-xl bg-slate-800/30 border border-slate-700/50 backdrop-blur-xl p-1 text-slate-300 ${className}`}>
+  <div className={`${className}`}>
     {children}
   </div>
 );
@@ -54,12 +54,14 @@ const TabsTrigger = ({ value, children, className = '' }: TabsTriggerProps) => {
     <button
       type="button"
       data-state={isActive ? 'active' : 'inactive'}
-      className={`inline-flex items-center justify-center whitespace-nowrap rounded-xl px-3 py-1.5 text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 ${
+      className={`w-full h-10 inline-flex items-center justify-center whitespace-nowrap rounded-xl px-4 py-2 text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 ${
         isActive 
           ? 'text-white shadow-sm' 
           : 'text-slate-300 hover:bg-slate-800/50'
       } ${className}`}
       onClick={() => context.onValueChange(value)}
+      role="tab"
+      aria-selected={isActive}
     >
       {children}
     </button>
