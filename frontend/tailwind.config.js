@@ -9,6 +9,13 @@ module.exports = {
     'text-yellow-400', 'text-blue-400', 'text-green-400',
     'group-hover:text-yellow-400', 'group-hover:text-blue-400', 'group-hover:text-green-400',
     'from-yellow-500/50', 'from-blue-500/50', 'from-green-500/50',
+    // Dynamic hero orbit color classes
+    'bg-orange-500/20', 'border-orange-500/30', 'bg-orange-500/30', 'bg-orange-500', 'text-orange-300',
+    'bg-green-500/20', 'border-green-500/30', 'bg-green-500/30', 'bg-green-500', 'text-emerald-300',
+    'bg-red-500/20', 'border-red-500/30', 'bg-red-500/30', 'bg-red-500', 'text-red-300',
+    'bg-yellow-500/20', 'border-yellow-500/30', 'bg-yellow-500/30', 'bg-yellow-500', 'text-yellow-300',
+    'bg-blue-500/20', 'border-blue-500/30', 'bg-blue-500/30', 'bg-blue-500', 'text-sky-300',
+    'bg-purple-500/20', 'border-purple-500/30', 'bg-purple-500/30', 'bg-purple-500', 'text-fuchsia-300',
   ],
   theme: {
     extend: {

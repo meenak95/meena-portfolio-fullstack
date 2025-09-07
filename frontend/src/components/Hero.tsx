@@ -23,6 +23,15 @@ import { Badge } from "./ui/badge";
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
 
+  const techStack = [
+    { name: 'Java', icon: Code, color: 'orange' },
+    { name: 'Spring Boot', icon: Cpu, color: 'green' },
+    { name: 'Angular', icon: Globe, color: 'red' },
+    { name: 'AWS', icon: Cloud, color: 'yellow' },
+    { name: 'PostgreSQL', icon: Database, color: 'blue' },
+    { name: 'Kubernetes', icon: Server, color: 'purple' },
+  ];
+
   return (
     <section ref={heroRef} className="relative min-h-screen flex items-center justify-center px-6 pt-16">
       <div className="max-w-7xl mx-auto text-center z-10">
@@ -55,8 +64,8 @@ export default function Hero() {
           </p>
         </div>
 
-        {/* Orbital CPU Animation (polished + full icons) */}
-        <div className="relative mb-16 h-72 w-72 md:h-96 md:w-96 mx-auto opacity-0 translate-y-8 animate-fade-in-up delay-300">
+        {/* Animated Tech Stack Orbit (from spec) */}
+        <div className="relative mb-16 h-96 w-96 mx-auto opacity-0 translate-y-8 animate-fade-in-up delay-300">
           {/* Ambient glow */}
           <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500/10 via-cyan-500/10 to-purple-500/10 blur-3xl"></div>
 
@@ -64,49 +73,45 @@ export default function Hero() {
           <div className="absolute inset-0 rounded-full border-2 border-slate-700/40"></div>
           <div className="absolute inset-6 rounded-full border border-slate-700/30"></div>
 
-          {/* Rotating orbit container */}
+          {/* Rotating orbit container with computed positions */}
           <div className="absolute inset-0 animate-spin-very-slow">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2">
-              <div className="p-2.5 rounded-2xl bg-slate-800/60 border border-slate-700/50 backdrop-blur-md shadow-md">
-                <Code className="w-5 h-5 text-orange-300" />
+            {techStack.map((tech, index) => (
+              <div
+                key={tech.name}
+                className="absolute flex items-center justify-center"
+                style={{
+                  left: '50%',
+                  top: '50%',
+                  transform: `translate(-50%, -50%) rotate(${index * 60}deg) translateY(-140px) rotate(-${index * 60}deg)`,
+                }}
+              >
+                <div
+                  className={`group relative p-4 rounded-2xl bg-${tech.color}-500/20 border border-${tech.color}-500/30 backdrop-blur-sm hover:scale-125 transition-all duration-500 cursor-pointer animate-float-gentle`}
+                  style={{ animationDelay: `${index * 0.5}s` }}
+                >
+                  <div className={`p-2 rounded-xl bg-${tech.color}-500/30 group-hover:animate-spin`}>
+                    <tech.icon className="w-6 h-6 text-white" />
+                  </div>
+                  <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-slate-800/90 px-3 py-1 rounded-full text-xs font-medium text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                    {tech.name}
+                  </div>
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    {Array.from({ length: 6 }).map((_, i) => (
+                      <div
+                        key={i}
+                        className={`absolute w-1 h-1 bg-${tech.color}-500 rounded-full animate-particle-explosion`}
+                        style={{
+                          left: '50%',
+                          top: '50%',
+                          animationDelay: `${i * 0.1}s`,
+                          transform: `rotate(${i * 60}deg)`
+                        }}
+                      />
+                    ))}
+                  </div>
+                </div>
               </div>
-            </div>
-            <div className="absolute right-0 top-1/2 -translate-y-1/2">
-              <div className="p-2.5 rounded-2xl bg-slate-800/60 border border-slate-700/50 backdrop-blur-md shadow-md">
-                <Server className="w-5 h-5 text-emerald-300" />
-              </div>
-            </div>
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2">
-              <div className="p-2.5 rounded-2xl bg-slate-800/60 border border-slate-700/50 backdrop-blur-md shadow-md">
-                <Database className="w-5 h-5 text-sky-300" />
-              </div>
-            </div>
-            <div className="absolute left-0 top-1/2 -translate-y-1/2">
-              <div className="p-2.5 rounded-2xl bg-slate-800/60 border border-slate-700/50 backdrop-blur-md shadow-md">
-                <Globe className="w-5 h-5 text-fuchsia-300" />
-              </div>
-            </div>
-            {/* Diagonals for SDLC icons */}
-            <div className="absolute top-6 right-6">
-              <div className="p-2.5 rounded-2xl bg-slate-800/60 border border-slate-700/50 backdrop-blur-md shadow-md">
-                <Wrench className="w-5 h-5 text-yellow-300" />
-              </div>
-            </div>
-            <div className="absolute bottom-6 left-6">
-              <div className="p-2.5 rounded-2xl bg-slate-800/60 border border-slate-700/50 backdrop-blur-md shadow-md">
-                <TestTube className="w-5 h-5 text-pink-300" />
-              </div>
-            </div>
-            <div className="absolute top-6 left-6">
-              <div className="p-2.5 rounded-2xl bg-slate-800/60 border border-slate-700/50 backdrop-blur-md shadow-md">
-                <Rocket className="w-5 h-5 text-red-300" />
-              </div>
-            </div>
-            <div className="absolute bottom-6 right-6">
-              <div className="p-2.5 rounded-2xl bg-slate-800/60 border border-slate-700/50 backdrop-blur-md shadow-md">
-                <Monitor className="w-5 h-5 text-indigo-300" />
-              </div>
-            </div>
+            ))}
           </div>
 
           {/* Central CPU */}
