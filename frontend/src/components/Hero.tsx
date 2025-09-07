@@ -36,15 +36,10 @@ export default function Hero() {
     <section ref={heroRef} className="relative min-h-screen flex items-center justify-center px-6 pt-16">
       <div className="max-w-7xl mx-auto text-center z-10">
         <div className="mb-12 opacity-0 translate-y-8 animate-fade-in-up">
-          <Badge variant="secondary" className="mb-8 bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-400 border-blue-500/30 px-6 py-2 text-lg animate-glow">
+          <Badge variant="secondary" className="mb-8 px-6 py-2 text-lg rounded-full text-white bg-gradient-to-r from-fuchsia-500 via-purple-500 to-indigo-500 bg-300% animate-gradient-x shadow-[0_0_20px_rgba(168,85,247,0.35)]">
             <Sparkles className="w-5 h-5 mr-2 animate-spin-slow" />
-            Lead Software Engineer
+            Full Stack Developer
           </Badge>
-          <div className="flex items-center justify-center mb-6">
-            <div className="w-14 h-14 rounded-full bg-slate-800/60 border border-slate-700/50 flex items-center justify-center">
-              <Cpu className="w-7 h-7 text-cyan-400 animate-spin-very-slow" />
-            </div>
-          </div>
           
           <h1 className="text-7xl md:text-9xl font-black mb-8 leading-none">
             <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent animate-gradient-x bg-300%">
