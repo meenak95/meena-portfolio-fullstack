@@ -3,6 +3,13 @@ module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
+  safelist: [
+    // Dynamic classes used in `Portfolio.tsx` via template strings
+    'bg-yellow-500/20', 'bg-blue-500/20', 'bg-green-500/20',
+    'text-yellow-400', 'text-blue-400', 'text-green-400',
+    'group-hover:text-yellow-400', 'group-hover:text-blue-400', 'group-hover:text-green-400',
+    'from-yellow-500/50', 'from-blue-500/50', 'from-green-500/50',
+  ],
   theme: {
     extend: {
       animation: {
