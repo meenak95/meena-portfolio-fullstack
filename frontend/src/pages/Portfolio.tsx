@@ -565,7 +565,7 @@ export default function Portfolio() {
                   <MapPin className="w-8 h-8" />
                 </div>
                 <p className="text-slate-400 text-sm mb-2">Location</p>
-                <p className="text-white font-medium">Singapore</p>
+                <p className="text-white font-medium">Singapore • India</p>
               </CardContent>
             </Card>
           </div>
@@ -627,7 +627,7 @@ export default function Portfolio() {
               <h4 className="text-white font-semibold">Connect</h4>
               <div className="flex space-x-4">
                 <a
-                  href="https://www.linkedin.com/in/meenakannan-mk/"
+                  href="https://www.linkedin.com/in/meena-kannan-mk"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 bg-slate-800/50 rounded-xl flex items-center justify-center text-slate-400 hover:text-blue-400 hover:bg-blue-500/20 transition-all duration-300 group"

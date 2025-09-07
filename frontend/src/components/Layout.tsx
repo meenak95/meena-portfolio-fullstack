@@ -80,7 +80,7 @@ export default function Layout({ children, currentPageName }: LayoutProps) {
       {/* Social Links */}
       <div className="fixed left-6 top-1/2 transform -translate-y-1/2 z-50 space-y-4 hidden lg:block">
         <a
-          href="https://www.linkedin.com/in/meenakannan-mk/"
+          href="https://www.linkedin.com/in/meena-kannan-mk"
           target="_blank"
           rel="noopener noreferrer"
           className="block w-12 h-12 bg-slate-800/50 backdrop-blur-xl rounded-full flex items-center justify-center text-slate-400 hover:text-blue-400 hover:bg-blue-500/20 transition-all duration-300 group border border-slate-700/50"

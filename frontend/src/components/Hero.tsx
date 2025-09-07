@@ -4,7 +4,8 @@ import {
   ArrowRight,
   Download,
   Sparkles,
-  Briefcase
+  Briefcase,
+  Cpu
 } from "lucide-react";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
@@ -21,6 +22,11 @@ export default function Hero() {
             <Sparkles className="w-5 h-5 mr-2 animate-spin-slow" />
             Lead Software Engineer
           </Badge>
+          <div className="flex items-center justify-center mb-6">
+            <div className="w-14 h-14 rounded-full bg-slate-800/60 border border-slate-700/50 flex items-center justify-center">
+              <Cpu className="w-7 h-7 text-cyan-400 animate-spin-very-slow" />
+            </div>
+          </div>
           
           <h1 className="text-7xl md:text-9xl font-black mb-8 leading-none">
             <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent animate-gradient-x bg-300%">
