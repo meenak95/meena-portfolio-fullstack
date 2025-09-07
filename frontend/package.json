@@ -29,6 +29,7 @@
     "prebuild": "npm run build:css",
     "start": "craco start",
     "build": "PUBLIC_URL=/meena-portfolio-fullstack craco build",
+    "deploy": "npm run build && npx --yes gh-pages -d build -b gh-pages -m 'Deploy latest portfolio'",
     "test": "craco test",
     "eject": "react-scripts eject"
   },
