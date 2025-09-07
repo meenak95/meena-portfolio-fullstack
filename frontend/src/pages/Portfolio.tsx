@@ -600,18 +600,18 @@ export default function Portfolio() {
               <h4 className="text-white font-semibold">Quick Links</h4>
               <div className="space-y-2">
                 {[
-                  { name: "About", url: "#about" },
-                  { name: "Skills", url: "#skills" },
-                  { name: "Projects", url: "#projects" },
-                  { name: "Contact", url: createPageUrl("Contact") }
+                  { name: "About", to: createPageUrl("About") },
+                  { name: "Skills", to: createPageUrl("Skills") },
+                  { name: "Experience", to: createPageUrl("Experience") },
+                  { name: "Contact", to: createPageUrl("Contact") }
                 ].map((link, index) => (
-                  <a
+                  <Link
                     key={index}
-                    href={link.url}
+                    to={link.to}
                     className="block text-slate-400 hover:text-blue-400 transition-colors duration-300 text-sm"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -646,7 +646,7 @@ export default function Portfolio() {
 
           <div className="border-t border-slate-800/50 mt-8 pt-8 text-center">
             <p className="text-slate-400 text-sm">
-              © 2024 Meena Kannan. Crafted with passion and precision.
+              © 2025 Meena Kannan. Delivering reliable solutions with passion and precision
             </p>
           </div>
         </div>
