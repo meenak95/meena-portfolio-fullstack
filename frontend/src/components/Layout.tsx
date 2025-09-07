@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { createPageUrl } from "../utils";
 import { Home, User, Code, Briefcase, Mail, MessageCircle } from "lucide-react";
+import Footer from "./Footer";
 
 const navigationItems = [
   { title: "Home", url: createPageUrl("Portfolio"), icon: Home },
@@ -121,6 +122,9 @@ export default function Layout({ children, currentPageName }: LayoutProps) {
       <main className="relative z-10 pt-16">
         {children}
       </main>
+
+      {/* Global Footer */}
+      <Footer />
     </div>
   );
 }
