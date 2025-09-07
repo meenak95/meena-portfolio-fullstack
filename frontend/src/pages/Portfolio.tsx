@@ -228,15 +228,9 @@ export default function Portfolio() {
                       <div className="mb-6">
                         <div className="flex justify-between text-sm text-slate-400 mb-3">
                           <span>Proficiency</span>
-                          <span className="font-bold text-white">{skill.proficiency}%</span>
+                          <span className="font-bold text-white" aria-live="polite">{skill.proficiency}%</span>
                         </div>
-                        <div className="relative">
-                          <Progress 
-                            value={skill.proficiency} 
-                            className="h-3 bg-slate-700/50 rounded-full overflow-hidden"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full animate-shimmer"></div>
-                        </div>
+                        <Progress value={skill.proficiency} />
                       </div>
                       
                       {skill.description && (
