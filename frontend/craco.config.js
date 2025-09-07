@@ -2,16 +2,17 @@ module.exports = {
   style: {
     postcss: {
       plugins: [
-        require('@tailwindcss/postcss7-compat'),
+        require('tailwindcss'),
         require('autoprefixer'),
       ],
     },
   },
   webpack: {
     configure: (webpackConfig) => {
+      const isDev = process.env.NODE_ENV !== 'production';
       webpackConfig.output = {
         ...webpackConfig.output,
-        publicPath: process.env.PUBLIC_URL || '/meena-portfolio-fullstack/',
+        publicPath: isDev ? '/' : (process.env.PUBLIC_URL || '/meena-portfolio-fullstack/'),
       };
       return webpackConfig;
     },

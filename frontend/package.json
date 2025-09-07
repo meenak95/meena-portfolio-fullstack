@@ -22,7 +22,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "PUBLIC_URL=/meena-portfolio-fullstack craco start",
+    "start": "craco start",
     "build": "PUBLIC_URL=/meena-portfolio-fullstack craco build",
     "test": "craco test",
     "eject": "react-scripts eject"
