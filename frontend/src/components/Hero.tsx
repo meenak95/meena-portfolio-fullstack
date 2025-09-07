@@ -3,21 +3,16 @@ import {
   ChevronRight, 
   ArrowRight,
   Download,
-  Sparkles,
   Briefcase,
   Cpu,
   Code,
   Globe,
   Cloud,
   Database,
-  Server,
-  Wrench,
-  TestTube,
-  Rocket,
-  Monitor,
-  Coffee
+  Server
 } from "lucide-react";
 import { Button } from "./ui/button";
+import { FaJava } from 'react-icons/fa';
 import { Badge } from "./ui/badge";
 
 
@@ -39,8 +34,8 @@ export default function Hero() {
         <div className="mb-12 opacity-0 translate-y-8 animate-fade-in-up">
           <Badge variant="secondary" className="mb-8 px-6 py-2 text-lg rounded-full text-white bg-gradient-to-r from-fuchsia-500 via-purple-500 to-indigo-500 bg-300% animate-gradient-x shadow-[0_0_20px_rgba(168,85,247,0.35)]">
             <span className="inline-flex items-center">
-              <span className="mr-3 inline-flex items-center justify-center w-7 h-7 rounded-full bg-orange-500/25 border border-orange-400/40 shadow-[0_0_10px_rgba(249,115,22,0.35)]">
-                <img src="https://cdn.simpleicons.org/java/ff8c00" alt="Java" className="w-4 h-4" />
+              <span className="mr-3 inline-flex items-center justify-center w-7 h-7 rounded-full bg-orange-500/25 border border-orange-400/40 shadow-[0_0_10px_rgba(249,115,22,0.35)] animate-pulse">
+                <FaJava className="w-4 h-4 text-orange-300" aria-label="Java" />
               </span>
               Full Stack Developer
             </span>
