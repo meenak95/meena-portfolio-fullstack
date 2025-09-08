@@ -59,7 +59,7 @@ export default function Hero() {
       </div>
 
       {/* Animated Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-gentle">
+      <div className="pointer-events-none select-none absolute bottom-6 md:bottom-12 left-1/2 transform -translate-x-1/2 animate-bounce-gentle hidden md:block">
         <div className="flex flex-col items-center space-y-2">
           <div className="w-6 h-10 border-2 border-slate-600 rounded-full flex justify-center">
             <div className="w-1 h-3 bg-gradient-to-b from-blue-400 to-transparent rounded-full animate-scroll-indicator"></div>
